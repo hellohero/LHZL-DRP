@@ -61,7 +61,7 @@ public class SecurityController {
      * @param roleinfo 角色model
      * @return  保存结果
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/saveRole", produces="application/json")
+    @PostMapping(value = "/saveRole", produces="application/json")
     @ResponseBody
     public Response saveRole(@RequestBody RoleInfo roleinfo) {
         Response res = null;
@@ -94,7 +94,7 @@ public class SecurityController {
      * @param roleinfo 角色
      * @return  删除结果
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/delRole", produces="application/json")
+    @PostMapping(value = "/delRole", produces="application/json")
     @ResponseBody
     public Response delRole(@RequestBody RoleInfo roleinfo) {
         Response res = null;
