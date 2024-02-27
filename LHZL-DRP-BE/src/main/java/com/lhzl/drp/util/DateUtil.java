@@ -70,7 +70,7 @@ public class DateUtil {
     public static Date stringToDate(String str) {
         //str =  " 2008-07-10 19:20:00 " 格式
         SimpleDateFormat format = new SimpleDateFormat(formatPattern);
-        if (!str.equals("") && str != null) {
+        if (!"".equals(str) && str != null) {
             try {
                 return format.parse(str);
             } catch (ParseException e) {
