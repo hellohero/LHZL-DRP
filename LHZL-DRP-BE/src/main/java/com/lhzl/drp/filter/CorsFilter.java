@@ -1,5 +1,6 @@
 package com.lhzl.drp.filter;
 
+import io.github.pixee.security.Newlines;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
@@ -37,19 +38,19 @@ public class CorsFilter implements Filter {
                 }
             }*/
             String currentOrigin = request.getHeader("Origin");
-            response.setHeader("Access-Control-Allow-Origin", currentOrigin);
+            response.setHeader("Access-Control-Allow-Origin", Newlines.stripAll(currentOrigin));
         }
         if (StringUtils.isEmpty(allowMethods)) {
-            response.setHeader("Access-Control-Allow-Methods", allowMethods);
+            response.setHeader("Access-Control-Allow-Methods", Newlines.stripAll(allowMethods));
         }
         if (!StringUtils.isEmpty(allowCredentials)) {
-            response.setHeader("Access-Control-Allow-Credentials", allowCredentials);
+            response.setHeader("Access-Control-Allow-Credentials", Newlines.stripAll(allowCredentials));
         }
         if (!StringUtils.isEmpty(allowHeaders)) {
-            response.setHeader("Access-Control-Allow-Headers", allowHeaders);
+            response.setHeader("Access-Control-Allow-Headers", Newlines.stripAll(allowHeaders));
         }
         if (!StringUtils.isEmpty(exposeHeaders)) {
-            response.setHeader("Access-Control-Expose-Headers", exposeHeaders);
+            response.setHeader("Access-Control-Expose-Headers", Newlines.stripAll(exposeHeaders));
         }
         chain.doFilter(req, res);
     }
